@@ -59,7 +59,9 @@ export const PROJECTS: Project[] = [
     role: "Full Stack Developer",
     techStack: ["React", "Tailwind CSS", "PHP", "MySQL", "Google Maps API", "PayMongo (Test)"],
     // INSTRUCTION: Put a screenshot of your project in 'public' and name it 'capstone.jpg'
-    image: "/capstone.jpg" 
+    image: "/capstone.jpg",
+    link: "https://capstone-project-ten-kohl.vercel.app?_vercel_share=da3AHNdU87Skwag9mGnKhC9v2WDW1F4t",
+    repo: "https://github.com/ZAA-ZAA/CapstoneProject"
   },
   {
     title: "Personal Portfolio with AI",
@@ -68,7 +70,8 @@ export const PROJECTS: Project[] = [
     role: "Frontend Developer",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Gemini API (Learning)"],
     // Using a generic coding background or you can add 'portfolio.jpg' to public
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop",
+    repo: "https://github.com/ZAA-ZAA/MyPortfolio"
   }
 ];
 

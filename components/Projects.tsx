@@ -1,6 +1,6 @@
 import React from 'react';
 import { PROJECTS } from '../constants';
-import { Code2, Image as ImageIcon } from 'lucide-react';
+import { Code2, Image as ImageIcon, ExternalLink, Github } from 'lucide-react';
 
 const Projects: React.FC = () => {
   return (
@@ -48,7 +48,29 @@ const Projects: React.FC = () => {
                   {project.description}
                 </p>
 
-                <div className="mt-auto">
+                <div className="mt-auto flex flex-col gap-2">
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 px-4 py-2 rounded-lg shadow-sm hover:shadow transition"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      View Live Project
+                    </a>
+                  )}
+                  {project.repo && (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-4 py-2 rounded-lg transition"
+                    >
+                      <Github className="w-4 h-4" />
+                      View Repository
+                    </a>
+                  )}
                   <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
                     <Code2 className="w-3 h-3" /> Technologies Used
                   </h4>
