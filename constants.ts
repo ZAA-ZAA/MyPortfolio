@@ -11,7 +11,7 @@ export const PERSONAL_INFO = {
   photoUrl: "/profile.jpg", 
   // INSTRUCTION: Put your resume in the 'public' folder and name it 'resume.pdf'
   resumeUrl: "/resume.pdf", 
-  bio: "I am a 4th-year BSIT student at Pamantasan ng Cabuyao. While I have achieved Dean's List recognition, I consider myself a student first, always eager to learn. I am looking for an OJT opportunity where I can be trained and gain practical industry experience.",
+  bio: "I am a 4th-year BSIT student at Pamantasan ng Cabuyao. While I have achieved Dean's List recognition, I consider myself a student first, always eager to learn. I am looking for part-time or full-time work opportunities where I can apply my skills and gain practical industry experience.",
   aboutLong: "As an IT student, I have spent my college years learning the foundations of software development. Being on the Dean's List has encouraged me to keep studying, but I understand that school is different from the real world. I am still learning and building my skills in React, Tailwind CSS, PHP, and MySQL. I am hardworking, adaptable, and ready to listen to mentors who can help me grow into a professional developer."
 };
 

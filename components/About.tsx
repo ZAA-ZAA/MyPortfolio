@@ -55,7 +55,7 @@ const About: React.FC = () => {
                   </div>
                    <div className="flex gap-3 items-start">
                     <div className="w-2 h-2 mt-2 rounded-full bg-brand-500 flex-shrink-0"></div>
-                    <p className="text-sm text-slate-600">Ready for Immediate OJT Deployment</p>
+                    <p className="text-sm text-slate-600">Available for Part-time & Full-time Work</p>
                   </div>
                 </div>
 

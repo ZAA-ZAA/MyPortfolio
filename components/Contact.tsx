@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
             <p className="text-slate-400">
-              I am actively looking for an OJT / Internship opportunity. <br/>
+              I am actively looking for part-time or full-time work opportunities. <br/>
               If you have any questions or would like to discuss how I can contribute to your team, please contact me.
             </p>
           </div>
