@@ -30,14 +30,9 @@ Guidelines:
 5. Keep answers short (under 3 sentences) unless asked for details.
 `;
 
-export const generateResponse = async (apiKey: string, history: {role: string, parts: {text: string}[]}[], message: string) => {
+export const generateResponse = async (history: {role: string, parts: {text: string}[]}[], message: string) => {
   try {
-    const ai = new GoogleGenAI({ apiKey });
-    
-    // Convert history to the format expected by the new SDK if needed, 
-    // or simply use generateContent if we don't need multi-turn persistence for this simple widget.
-    // For a simple portfolio chat, single turn with context is often safer to avoid token limits, 
-    // but Chat mode is better for conversation.
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     
     const chat = ai.chats.create({
       model: 'gemini-3-flash-preview',

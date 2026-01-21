@@ -1,25 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, Settings, Loader2 } from 'lucide-react';
+import { X, Send, Bot, Loader2 } from 'lucide-react';
 import { generateResponse } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
 const GeminiChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [apiKey, setApiKey] = useState<string>('');
-  const [showSettings, setShowSettings] = useState(false);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     { id: '1', role: 'model', text: 'Hi! I am Zoen\'s AI Assistant. Ask me anything about his projects, skills, or education!' }
   ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Try to get key from local storage on load
-    const storedKey = localStorage.getItem('gemini_api_key');
-    if (storedKey) setApiKey(storedKey);
-    else setShowSettings(true); // Prompt for key if missing
-  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -29,19 +20,9 @@ const GeminiChat: React.FC = () => {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  const handleSaveKey = (e: React.FormEvent) => {
-    e.preventDefault();
-    localStorage.setItem('gemini_api_key', apiKey);
-    setShowSettings(false);
-  };
-
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
-    if (!apiKey) {
-      setShowSettings(true);
-      return;
-    }
 
     const userMsg: ChatMessage = { id: Date.now().toString(), role: 'user', text: input };
     setMessages(prev => [...prev, userMsg]);
@@ -55,7 +36,7 @@ const GeminiChat: React.FC = () => {
         parts: [{ text: m.text }]
       }));
 
-      const responseText = await generateResponse(apiKey, historyForApi, userMsg.text);
+      const responseText = await generateResponse(historyForApi, userMsg.text);
       
       const aiMsg: ChatMessage = { 
         id: (Date.now() + 1).toString(), 
@@ -67,7 +48,7 @@ const GeminiChat: React.FC = () => {
       const errorMsg: ChatMessage = { 
         id: (Date.now() + 1).toString(), 
         role: 'model', 
-        text: "Error: Please check your API Key in settings. (Use a free key from aistudio.google.com)",
+        text: "I'm having trouble connecting right now. Please try again later.",
         isError: true
       };
       setMessages(prev => [...prev, errorMsg]);
@@ -97,43 +78,11 @@ const GeminiChat: React.FC = () => {
               <h3 className="font-bold">Zoen's Assistant</h3>
             </div>
             <div className="flex gap-2">
-                <button onClick={() => setShowSettings(!showSettings)} className="hover:bg-brand-700 p-1 rounded">
-                    <Settings className="w-4 h-4" />
-                </button>
                 <button onClick={() => setIsOpen(false)} className="hover:bg-brand-700 p-1 rounded">
                     <X className="w-5 h-5" />
                 </button>
             </div>
           </div>
-
-          {/* Settings Overlay */}
-          {showSettings && (
-            <div className="absolute inset-0 bg-slate-900/95 z-20 p-6 flex flex-col justify-center text-white">
-              <h4 className="text-lg font-bold mb-4">API Configuration</h4>
-              <p className="text-sm text-slate-300 mb-4">
-                To enable the AI chat, please enter a valid Gemini API Key. 
-                <br /><br />
-                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noreferrer" className="text-brand-400 underline">Get a free key here</a>.
-              </p>
-              <form onSubmit={handleSaveKey}>
-                <input 
-                  type="password" 
-                  placeholder="Paste API Key here..."
-                  className="w-full bg-slate-800 border border-slate-700 rounded p-3 mb-4 text-white focus:outline-none focus:border-brand-500"
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                />
-                <div className="flex gap-3">
-                  <button type="submit" className="bg-brand-600 hover:bg-brand-700 px-4 py-2 rounded text-sm font-bold flex-1">
-                    Save Key
-                  </button>
-                  <button type="button" onClick={() => setShowSettings(false)} className="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded text-sm flex-1">
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          )}
 
           {/* Messages Area */}
           <div className="flex-1 overflow-y-auto p-4 bg-slate-50 space-y-4">
