@@ -60,8 +60,8 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "Tailwind CSS", "PHP", "MySQL", "Google Maps API", "PayMongo (Test)"],
     // INSTRUCTION: Put a screenshot of your project in 'public' and name it 'capstone.jpg'
     image: "/capstone.jpg",
-    link: "https://capstone-project-ten-kohl.vercel.app?_vercel_share=da3AHNdU87Skwag9mGnKhC9v2WDW1F4t",
-    repo: "https://github.com/ZAA-ZAA/CapstoneProject"
+    link: "https://capstone-project-kappa-gules.vercel.app?_vercel_share=IB5G2MFGlYPzzN2AUi2lt0aejNfsBLNX",
+    repo: "https://github.com/systemdlmp/CapstoneProject"
   },
   {
     title: "Personal Portfolio with AI",
