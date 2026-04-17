@@ -6,21 +6,19 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Timeline from './components/Timeline';
 import Contact from './components/Contact';
-import GeminiChat from './components/GeminiChat';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col font-sans text-slate-800 bg-white">
+    <div className="page-shell min-h-screen font-sans text-slate-800">
       <Header />
-      <main className="flex-grow">
+      <main>
         <Hero />
         <About />
+        <Timeline />
         <Skills />
         <Projects />
-        <Timeline />
         <Contact />
       </main>
-      <GeminiChat />
     </div>
   );
 };

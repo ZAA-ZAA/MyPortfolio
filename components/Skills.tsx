@@ -1,32 +1,33 @@
 import React from 'react';
 import { SKILLS } from '../constants';
-import { CheckCircle2 } from 'lucide-react';
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-20 bg-white scroll-mt-28">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Technical Expertise</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
-            A snapshot of the technologies and tools I've worked with during my academic journey and capstone development.
+    <section id="skills" className="py-20 scroll-mt-28">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="max-w-3xl animate-fade-up">
+          <p className="section-kicker">Skills</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold text-slate-900 md:text-4xl">Core stack and working strengths.</h2>
+          <p className="mt-4 text-base leading-8 text-slate-600">
+            I kept this section focused on tools and areas I have actively used during coursework and recent internship work.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {SKILLS.map((skillGroup, index) => (
-            <div key={index} className="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-bold text-slate-800 mb-6 pb-2 border-b border-slate-200">
-                {skillGroup.category}
-              </h3>
-              <ul className="space-y-3">
-                {skillGroup.items.map((skill, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-slate-700">
-                    <CheckCircle2 className="w-5 h-5 text-brand-500 flex-shrink-0" />
-                    <span>{skill}</span>
-                  </li>
+            <div
+              key={skillGroup.category}
+              className={`panel spotlight-card rounded-[28px] p-6 transition duration-300 hover:-translate-y-1 animate-fade-up delay-${Math.min(index + 1, 5)}`}
+            >
+              <h3 className="font-display text-xl font-semibold text-slate-900">{skillGroup.category}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{skillGroup.description}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {skillGroup.items.map((skill) => (
+                  <span key={skill} className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700">
+                    {skill}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>

@@ -1,88 +1,235 @@
-import { Project, EducationItem, Skill, Seminar } from './types';
-import { BookOpen, Code, GraduationCap, Server, Smartphone, Users } from 'lucide-react';
+import { EducationItem, ExperienceItem, Project, QuickFact, Skill, StrengthItem } from './types';
 
 export const PERSONAL_INFO = {
   name: "Zoen A. Aldueza",
-  title: "Aspiring IT Professional & Web Developer",
+  title: "Junior Web Developer",
   email: "alduezazoen77@gmail.com",
   phone: "09675187933",
-  address: "247 Purok 2, Gulod, City of Cabuyao, Laguna",
-  // INSTRUCTION: Put your photo in the 'public' folder and name it 'profile.jpg'
-  photoUrl: "/profile.jpg", 
-  // INSTRUCTION: Put your resume in the 'public' folder and name it 'resume.pdf'
-  resumeUrl: "/resume.pdf", 
-  bio: "I am a 4th-year BSIT student at Pamantasan ng Cabuyao. While I have achieved Dean's List recognition, I consider myself a student first, always eager to learn. I am looking for part-time or full-time work opportunities where I can apply my skills and gain practical industry experience.",
-  aboutLong: "As an IT student, I have spent my college years learning the foundations of software development. Being on the Dean's List has encouraged me to keep studying, but I understand that school is different from the real world. I am still learning and building my skills in React, Tailwind CSS, PHP, and MySQL. I am hardworking, adaptable, and ready to listen to mentors who can help me grow into a professional developer."
+  location: "Cabuyao, Laguna, Philippines",
+  photoUrl: "/profile.jpg",
+  resumeUrl: "/resume.pdf",
+  availability: "Open to junior web development opportunities",
+  shortBio:
+    "BSIT student at Pamantasan ng Cabuyao who recently completed an internship at Gleent Inc., contributing to AI-assisted tools, business systems, and workflow-driven web applications using React, TypeScript, Python, and database-backed services.",
+  about:
+    "I enjoy building products that feel clear, practical, and easy to use. My recent experience involved working across different types of web applications, from business workflows to AI-assisted tools, which helped me become more mindful about usability, structure, and the importance of shipping work that solves real day-to-day problems. During OJT, I also gained working experience with Python-based services and PostgreSQL-backed systems, and I am continuing to grow in those areas.",
+  lookingFor:
+    "Right now, I am looking for a junior frontend or full-stack role where I can keep learning from experienced teammates, contribute to real product work, and continue improving through feedback and hands-on delivery."
 };
+
+export const SOCIAL_LINKS = {
+  github: "https://github.com/ZAA-ZAA",
+  linkedin: "https://www.linkedin.com/in/zoen-aldueza/"
+};
+
+export const QUICK_FACTS: QuickFact[] = [
+  {
+    label: "Recent experience",
+    value: "Gleent Inc.",
+    detail: "Internship completed from January 2026 to April 2026"
+  },
+  {
+    label: "Stack growth",
+    value: "Python + PostgreSQL",
+    detail: "Used during OJT in Flask, FastAPI, and database-backed application work"
+  },
+  {
+    label: "Current goal",
+    value: "Entry-level development role",
+    detail: "Open to collaborative teams and real production work"
+  }
+];
+
+export const STRENGTHS: StrengthItem[] = [
+  {
+    title: "Product-minded interfaces",
+    description: "I like turning requirements into screens that are clean, understandable, and useful for everyday users.",
+    icon: "layout"
+  },
+  {
+    title: "Workflow-oriented thinking",
+    description: "I am comfortable with multi-step systems such as approvals, records, tracking flows, and operational logic.",
+    icon: "workflow"
+  },
+  {
+    title: "AI-assisted web features",
+    description: "My internship exposed me to transcription, contextual chat, memory-based assistants, and workflow automation.",
+    icon: "brain"
+  }
+];
 
 export const SKILLS: Skill[] = [
   {
-    category: "Frontend Development",
-    items: ["React", "HTML5", "CSS3", "JavaScript (ES6+)", "Tailwind CSS", "Bootstrap"]
+    category: "Frontend",
+    description: "Tools I use to build responsive interfaces and structured user experiences.",
+    items: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"]
   },
   {
-    category: "Backend & Database",
-    items: ["PHP", "MySQL", "SQL Database Fundamentals", "Node.js (Basic)"]
+    category: "Backend & Data",
+    description: "Technologies I have used for application logic, APIs, and database-backed systems, including working exposure from OJT.",
+    items: ["Python (working knowledge)", "Flask", "FastAPI", "PostgreSQL (working knowledge)", "MySQL", "REST APIs", "SQL Fundamentals"]
   },
   {
-    category: "Tools & Soft Skills",
-    items: ["Git & GitHub", "Adaptability", "Continuous Learning", "Team Collaboration", "MS Office"]
+    category: "AI & Workflow",
+    description: "Areas I explored during internship work involving assistants, automation, and process-driven products.",
+    items: ["AI-assisted workflows", "Prompt-based product features", "Context handling", "Approval flows", "Automation thinking", "Transcript-driven experiences"]
+  },
+  {
+    category: "Tools & Collaboration",
+    description: "Habits and tools that support day-to-day delivery in a team setting.",
+    items: ["Git", "GitHub", "Team collaboration", "Adaptability", "Continuous learning", "Documentation"]
+  }
+];
+
+export const EXPERIENCE: ExperienceItem[] = [
+  {
+    company: "Gleent Inc.",
+    role: "Intern",
+    period: "January 2026 - April 2026",
+    summary:
+      "Completed my OJT by contributing to multiple web and AI-enabled products, ranging from business tools to workflow automation systems, with exposure to both frontend delivery and Python-backed services.",
+    bullets: [
+      "Worked across six projects covering video intelligence, billing, affiliate tracking, knowledge assistants, AI workflows, and leave approval flows.",
+      "Contributed in an environment where requirements were practical and product-oriented, with attention to usability, implementation detail, and connected system behavior.",
+      "Strengthened my understanding of React and TypeScript on the frontend while also gaining working exposure to Python, FastAPI or Flask services, and PostgreSQL-backed workflows."
+    ],
+    stack: ["React", "TypeScript", "Python", "Flask", "FastAPI", "PostgreSQL", "REST APIs", "AI workflows"]
   }
 ];
 
 export const EDUCATION: EducationItem[] = [
   {
     school: "Pamantasan ng Cabuyao",
-    degree: "Bachelor of Science in Information Technology (BSIT)",
+    degree: "Bachelor of Science in Information Technology",
     year: "2022 - Present",
-    details: ["4th Year Student - Graduating Class", "1st Year - Dean's List Awardee", "2nd Year - Dean's List Awardee"]
-  },
-  {
-    school: "Pamantasan ng Cabuyao",
-    degree: "Senior High School (STEM/ICT)",
-    year: "2019 - 2022",
-    details: ["Grade 12 - Graduated With Honors"]
-  },
-  {
-    school: "Gulod Elementary School",
-    degree: "Primary Education",
-    year: "2011 - 2016",
-    details: ["Graduated with Awards"]
+    details: [
+      "Recent OJT completion at Gleent Inc.",
+      "Focused on web development, software engineering, and database-backed systems."
+    ]
   }
 ];
 
 export const PROJECTS: Project[] = [
   {
-    title: "Web-Based Lot Management System",
-    // Description updated to reflect role and specific Paymongo status
-    description: "A collaborative Capstone project for Divine Life Memorial Park. I worked as a Full Stack Developer to help digitize the mapping and ownership management of memorial lots. We implemented a prototype integration of PayMongo to demonstrate online payment capabilities.",
-    role: "Full Stack Developer",
-    techStack: ["React", "Tailwind CSS", "PHP", "MySQL", "Google Maps API", "PayMongo (Test)"],
-    // INSTRUCTION: Put a screenshot of your project in 'public' and name it 'capstone.jpg'
-    image: "/capstone.jpg",
-    link: "https://capstone-project-kappa-gules.vercel.app?_vercel_share=IB5G2MFGlYPzzN2AUi2lt0aejNfsBLNX",
-    repo: "https://github.com/systemdlmp/CapstoneProject"
+    title: "Fathom AI",
+    summary:
+      "A video intelligence platform focused on transcription, analysis, and AI chat experiences tied to video content.",
+    role: "Intern Contributor",
+    period: "OJT 2026",
+    platform: "Web app",
+    category: "ai",
+    status: "Completed",
+    visibility: "Public repository",
+    techStack: ["React", "FastAPI", "PostgreSQL", "OpenAI", "FFmpeg", "Cloudflare R2"],
+    focusAreas: ["Transcription", "Video analysis", "AI chat", "User flow"],
+    highlights: [
+      "Combined a React frontend with FastAPI services for video ingestion, transcript analysis, and follow-up chat.",
+      "Stored jobs, transcripts, summaries, timestamps, and chat history in PostgreSQL.",
+      "Supported transcription with Whisper, analysis with GPT-4o, and optional video storage through Cloudflare R2."
+    ],
+    icon: "video",
+    repo: "https://github.com/ZAA-ZAA/FathomAI_Final"
   },
   {
-    title: "Personal Portfolio with AI",
-    // Description updated to reflect learning status
-    description: "My first exploration into integrating Artificial Intelligence. I built this portfolio to learn how to connect React with the Google Gemini API. It serves as a practical experiment to understand how AI tools can enhance user experience.",
-    role: "Frontend Developer",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Gemini API (Learning)"],
-    // Using a generic coding background or you can add 'portfolio.jpg' to public
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop",
-    repo: "https://github.com/ZAA-ZAA/MyPortfolio"
+    title: "FreshBooks",
+    summary:
+      "An invoicing and billing web application covering clients, invoices, estimates, expenses, payments, reports, and AI-assisted features.",
+    role: "Intern Contributor",
+    period: "OJT 2026",
+    platform: "Web app",
+    category: "business",
+    status: "Completed",
+    visibility: "Public repository",
+    techStack: ["React", "TypeScript", "Python", "Flask", "PostgreSQL", "Docker"],
+    focusAreas: ["Billing workflows", "Client records", "Reporting", "AI assistance"],
+    highlights: [
+      "Handled multiple business modules inside one product workflow, including invoices, estimates, expenses, payments, and reports.",
+      "Used a Python or Flask backend with PostgreSQL together with a React frontend.",
+      "Included practical business features such as PDF export, email actions, multi-tenant flows, and AI-assisted functionality."
+    ],
+    icon: "billing",
+    repo: "https://github.com/ZAA-ZAA/FreshBooks"
+  },
+  {
+    title: "Affiliate Marketing System",
+    summary:
+      "A partner management platform for affiliate signup and approval, affiliate link generation, click tracking, and conversion tracking.",
+    role: "Intern Contributor",
+    period: "OJT 2026",
+    platform: "Web app",
+    category: "business",
+    status: "Completed",
+    visibility: "Public repository",
+    techStack: ["React", "Vite", "TypeScript", "Python", "Flask", "MySQL", "Docker"],
+    focusAreas: ["Partner onboarding", "Approval flow", "Tracking", "Link management"],
+    highlights: [
+      "Included a React and Vite admin dashboard, a customer-facing demo form app, and a Python Flask backend.",
+      "Covered partner signup, email verification, approval flow, affiliate link generation, and click or conversion analytics.",
+      "Used MySQL for tracking and reporting data, with Docker used to run the full stack."
+    ],
+    icon: "affiliate",
+    repo: "https://github.com/ZAA-ZAA/Affiliate-Marketing"
+  },
+  {
+    title: "KAI - Knowledge & AI Assistant",
+    summary:
+      "A personal AI assistant web app with persistent memory, contextual conversations, user-specific storage, and multi-session recall.",
+    role: "Intern Contributor",
+    period: "OJT 2026",
+    platform: "Web app",
+    category: "ai",
+    status: "Completed",
+    visibility: "Public repository",
+    techStack: ["LibreChat", "FastAPI", "PostgreSQL + pgvector", "MongoDB", "Docker", "OpenAI"],
+    focusAreas: ["Persistent memory", "Contextual chat", "User-specific recall", "Multi-session experience"],
+    highlights: [
+      "Focused on memory that persists across conversations instead of one-off prompt responses.",
+      "Used a FastAPI memory service with PostgreSQL and pgvector, alongside LibreChat and MongoDB.",
+      "Supported contextual conversations and user-specific memory recall across sessions."
+    ],
+    icon: "assistant",
+    repo: "https://github.com/ZAA-ZAA/Personal_Agent"
+  },
+  {
+    title: "Math AI Agent Workflow",
+    summary:
+      "An AI workflow focused on handling math-related tasks through structured steps, agent logic, and guided outputs.",
+    role: "Intern Contributor",
+    period: "OJT 2026",
+    platform: "Workflow system",
+    category: "workflow",
+    status: "Completed",
+    visibility: "Public project summary",
+    techStack: ["Python", "AI workflow design", "Structured prompting", "Task orchestration"],
+    focusAreas: ["AI workflow", "Structured reasoning", "Task orchestration", "Automation"],
+    highlights: [
+      "Approached math tasks through a defined agent workflow instead of a single prompt.",
+      "Organized AI behavior into clearer steps and reusable logic.",
+      "More workflow-driven than interface-driven, with emphasis on process design."
+    ],
+    icon: "math"
+  },
+  {
+    title: "Leave Request Approval System",
+    summary:
+      "An employee leave filing and approval workflow that supported email-based requests and replies or REST API submission, pending approvals, and automated notifications.",
+    role: "Intern Contributor",
+    period: "OJT 2026",
+    platform: "Workflow + API system",
+    category: "workflow",
+    status: "Completed",
+    visibility: "Public repository",
+    techStack: ["Python", "REST API", "Workflow automation", "Email integration", "Docker"],
+    focusAreas: ["Approval flow", "Email integration", "REST APIs", "Notifications"],
+    highlights: [
+      "Handled leave filing, manager approval, and pending approval states.",
+      "Supported both email-based interaction and API-based submission.",
+      "Focused on automation and operational clarity rather than visual UI work."
+    ],
+    icon: "approval",
+    repo: "https://github.com/ZAA-ZAA/workflow"
   }
 ];
 
-export const SEMINARS: Seminar[] = [
-  { title: "Let's Git Started: Version Control Mastery", date: "October 24, 2025" },
-  { title: "Cabuyeño's Computer Literacy Program", date: "March 9, 2024" },
-  { title: "Into the Computer Science: Modern Tech Trends", date: "September 23, 2023" },
-  { title: "IEngage: Youth Empowerment Webinar", date: "October 1, 2022" }
-];
-
-export const SOCIAL_LINKS = {
-  github: "https://github.com/", 
-  linkedin: "https://linkedin.com/" 
-};
+export const PROJECT_NOTE =
+  "These OJT projects are publicly shareable on GitHub. I only add live deployments selectively, since some systems are better presented through repository walkthroughs and documentation than always-on hosting.";
