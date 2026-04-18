@@ -1,66 +1,63 @@
 import React from 'react';
-import { PERSONAL_INFO } from '../constants';
-import { Award, BookOpen, User } from 'lucide-react';
+import { BrainCircuit, LayoutPanelTop, Workflow } from 'lucide-react';
+import { PERSONAL_INFO, STRENGTHS } from '../constants';
+
+const strengthIcons = {
+  layout: LayoutPanelTop,
+  workflow: Workflow,
+  brain: BrainCircuit,
+};
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 bg-slate-50 border-y border-slate-200 scroll-mt-28">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900">About Me</h2>
-            <div className="w-16 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+    <section id="about" className="py-20 scroll-mt-28">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div data-reveal className="max-w-3xl">
+          <p className="section-kicker">About</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold text-slate-900 md:text-4xl">
+            A grounded introduction focused on how I work and where I can grow.
+          </h2>
+          <p className="mt-4 text-base leading-8 text-slate-600">
+            For an early-career portfolio, what matters most is showing real project exposure, clear strengths, and the kind of work I am ready to contribute to next.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1.2fr,0.8fr]">
+          <div data-reveal className="panel rounded-[32px] p-8 md:p-10" style={{ ['--reveal-delay' as string]: '100ms' }}>
+            <p className="text-lg leading-8 text-slate-700">{PERSONAL_INFO.about}</p>
+            <p className="mt-6 text-lg leading-8 text-slate-700">{PERSONAL_INFO.lookingFor}</p>
+
+            <div className="mt-8 rounded-3xl border border-brand-100 bg-brand-50/80 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">What I want this portfolio to show</p>
+              <p className="mt-3 text-sm leading-7 text-slate-700">
+                Solid fundamentals, recent hands-on experience, and a practical approach to building interfaces and workflows that people can actually use.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100">
-            <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                  <User className="w-5 h-5 text-brand-500" />
-                  My Journey
-                </h3>
-                <p className="text-slate-600 leading-relaxed mb-6">
-                  {PERSONAL_INFO.aboutLong}
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                    <span className="block text-2xl font-bold text-brand-600 mb-1">4th Year</span>
-                    <span className="text-sm text-slate-500">BSIT Student</span>
-                  </div>
-                  <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                    <span className="block text-2xl font-bold text-brand-600 mb-1">2 Years</span>
-                    <span className="text-sm text-slate-500">Dean's List Awardee</span>
+          <div className="space-y-4">
+            {STRENGTHS.map((strength, index) => {
+              const Icon = strengthIcons[strength.icon];
+
+              return (
+                <div
+                  key={strength.title}
+                  data-reveal
+                  className="panel rounded-3xl p-6"
+                  style={{ ['--reveal-delay' as string]: `${180 + (index * 90)}ms` }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-900">{strength.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-600">{strength.description}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="w-full md:w-1/3 space-y-4">
-                <h3 className="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
-                   <Award className="w-5 h-5 text-brand-500" />
-                   Highlights
-                </h3>
-                
-                <div className="space-y-3">
-                  <div className="flex gap-3 items-start">
-                    <div className="w-2 h-2 mt-2 rounded-full bg-brand-500 flex-shrink-0"></div>
-                    <p className="text-sm text-slate-600">Dean's List Awardee</p>
-                  </div>
-                  <div className="flex gap-3 items-start">
-                    <div className="w-2 h-2 mt-2 rounded-full bg-brand-500 flex-shrink-0"></div>
-                    <p className="text-sm text-slate-600">Capstone Project Developer</p>
-                  </div>
-                  <div className="flex gap-3 items-start">
-                    <div className="w-2 h-2 mt-2 rounded-full bg-brand-500 flex-shrink-0"></div>
-                    <p className="text-sm text-slate-600">Passionate about Web Technologies</p>
-                  </div>
-                   <div className="flex gap-3 items-start">
-                    <div className="w-2 h-2 mt-2 rounded-full bg-brand-500 flex-shrink-0"></div>
-                    <p className="text-sm text-slate-600">Available for Part-time & Full-time Work</p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>

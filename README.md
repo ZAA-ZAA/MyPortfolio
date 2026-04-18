@@ -1,20 +1,19 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Zoen A. Aldueza Portfolio
 
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/drive/1jXoiqm8FUZm8-NEQuATp0kn9yFk0_fLc
+This is a personal portfolio built with React, TypeScript, Vite, and Tailwind CSS via CDN configuration.
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+Prerequisite: Node.js
 
+1. Install dependencies with `npm install`
+2. Start the development server with `npm run dev`
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Build
+
+Run `npm run build` to create a production build in `dist/`.
+
+## Notes
+
+- Profile photo and resume are served from the `public/` folder.
+- Project content is maintained in `constants.ts`.
