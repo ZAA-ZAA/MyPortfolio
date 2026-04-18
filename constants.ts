@@ -10,9 +10,9 @@ export const PERSONAL_INFO = {
   resumeUrl: "/resume.pdf",
   availability: "Open to junior web development opportunities",
   shortBio:
-    "BSIT student at Pamantasan ng Cabuyao who recently completed an internship at Gleent Inc., contributing to AI-assisted tools, business systems, and workflow-driven web applications using React, TypeScript, Python, and database-backed services.",
+    "BSIT student at Pamantasan ng Cabuyao who recently completed an internship at Gleent Inc., building training projects and hands-on web applications around AI-assisted tools, internal workflows, and database-backed services using React, TypeScript, Python, and PostgreSQL.",
   about:
-    "I enjoy building products that feel clear, practical, and easy to use. My recent experience involved working across different types of web applications, from business workflows to AI-assisted tools, which helped me become more mindful about usability, structure, and the importance of shipping work that solves real day-to-day problems. During OJT, I also gained working experience with Python-based services and PostgreSQL-backed systems, and I am continuing to grow in those areas.",
+    "I enjoy building interfaces and application flows that feel clear, practical, and easy to understand. During my internship, I worked on guided projects focused on modern web development, AI-assisted features, and workflow-based systems, which helped me build stronger habits around structure, usability, and team-oriented development. I also gained working exposure to Python services, PostgreSQL-backed systems, and Agile-style collaboration, and I am continuing to grow in those areas.",
   lookingFor:
     "Right now, I am looking for a junior frontend or full-stack role where I can keep learning from experienced teammates, contribute to real product work, and continue improving through feedback and hands-on delivery."
 };
@@ -87,10 +87,10 @@ export const EXPERIENCE: ExperienceItem[] = [
     role: "Intern",
     period: "January 2026 - April 2026",
     summary:
-      "Completed my OJT by contributing to multiple web and AI-enabled products, ranging from business tools to workflow automation systems, with exposure to both frontend delivery and Python-backed services.",
+      "Completed my OJT through guided project work at Gleent Inc., where I built and studied modern web applications, AI-assisted experiences, and workflow-driven systems while gaining hands-on frontend and Python-backed development exposure.",
     bullets: [
-      "Worked across six projects covering video intelligence, billing, affiliate tracking, knowledge assistants, AI workflows, and leave approval flows.",
-      "Contributed in an environment where requirements were practical and product-oriented, with attention to usability, implementation detail, and connected system behavior.",
+      "Worked across six internship projects covering video intelligence, billing, affiliate tracking, AI assistants, AI workflows, and leave approval flows.",
+      "Learned from mentor guidance, project walkthroughs, and Agile-style team practices that emphasized iteration, communication, and practical implementation choices.",
       "Strengthened my understanding of React and TypeScript on the frontend while also gaining working exposure to Python, FastAPI or Flask services, and PostgreSQL-backed workflows."
     ],
     stack: ["React", "TypeScript", "Python", "Flask", "FastAPI", "PostgreSQL", "REST APIs", "AI workflows"]

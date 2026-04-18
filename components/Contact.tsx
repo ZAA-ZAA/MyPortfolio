@@ -6,9 +6,9 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-20 scroll-mt-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="overflow-hidden rounded-[36px] bg-slate-950 px-6 py-10 text-white shadow-2xl md:px-10 md:py-12">
+        <div data-reveal className="overflow-hidden rounded-[36px] bg-slate-950 px-6 py-10 text-white shadow-2xl md:px-10 md:py-12">
           <div className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
-            <div className="animate-fade-up">
+            <div>
               <p className="section-kicker text-brand-100">Contact</p>
               <h2 className="mt-3 font-display text-3xl font-semibold md:text-4xl">
                 Let&apos;s talk about the role, the team, or the work.
@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               <a
                 href={`mailto:${PERSONAL_INFO.email}`}
-                className="rounded-[28px] border border-white/10 bg-white/5 p-6 transition hover:border-brand-400 hover:bg-white/10 animate-fade-up delay-1"
+                className="rounded-[28px] border border-white/10 bg-white/5 p-6 transition hover:border-brand-400 hover:bg-white/10"
               >
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-600 text-white">
@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
 
               <a
                 href={`tel:${PERSONAL_INFO.phone}`}
-                className="rounded-[28px] border border-white/10 bg-white/5 p-6 transition hover:border-brand-400 hover:bg-white/10 animate-fade-up delay-2"
+                className="rounded-[28px] border border-white/10 bg-white/5 p-6 transition hover:border-brand-400 hover:bg-white/10"
               >
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-700 text-white">
@@ -70,7 +70,7 @@ const Contact: React.FC = () => {
                 </div>
               </a>
 
-              <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 transition hover:border-brand-400 hover:bg-white/10 animate-fade-up delay-3">
+              <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 transition hover:border-brand-400 hover:bg-white/10">
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-700 text-white">
                     <MapPin className="h-5 w-5" />

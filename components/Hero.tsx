@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowDown, ArrowRight, Download, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { PERSONAL_INFO, QUICK_FACTS, SOCIAL_LINKS } from '../constants';
 
@@ -16,7 +16,7 @@ const heroStack = [
 
 const typedPhrases = [
   'AI-assisted tools',
-  'business web apps',
+  'team-based web apps',
   'workflow systems',
   'database-backed products',
 ];
@@ -30,6 +30,11 @@ const Hero: React.FC = () => {
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [isDraggingStack, setIsDraggingStack] = useState(false);
+  const [isStackPaused, setIsStackPaused] = useState(false);
+  const marqueeRef = useRef<HTMLDivElement | null>(null);
+  const dragStartX = useRef(0);
+  const dragStartScrollLeft = useRef(0);
 
   useEffect(() => {
     const activePhrase = typedPhrases[phraseIndex];
@@ -64,6 +69,36 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const marqueeElement = marqueeRef.current;
+    if (!marqueeElement) {
+      return;
+    }
+
+    const segmentWidth = marqueeElement.scrollWidth / 3;
+    marqueeElement.scrollLeft = segmentWidth;
+
+    let animationFrame = 0;
+
+    const tick = () => {
+      if (!isStackPaused && !isDraggingStack) {
+        marqueeElement.scrollLeft += 0.45;
+
+        if (marqueeElement.scrollLeft >= segmentWidth * 2) {
+          marqueeElement.scrollLeft -= segmentWidth;
+        } else if (marqueeElement.scrollLeft <= 0) {
+          marqueeElement.scrollLeft += segmentWidth;
+        }
+      }
+
+      animationFrame = window.requestAnimationFrame(tick);
+    };
+
+    animationFrame = window.requestAnimationFrame(tick);
+
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, [isDraggingStack, isStackPaused]);
+
   const imageStyle = useMemo(
     () => ({
       transform: `translateY(${Math.min(scrollY * 0.08, 26)}px)`,
@@ -77,6 +112,43 @@ const Hero: React.FC = () => {
     }),
     [scrollY],
   );
+
+  const handleStackPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    const marqueeElement = marqueeRef.current;
+    if (!marqueeElement) {
+      return;
+    }
+
+    dragStartX.current = event.clientX;
+    dragStartScrollLeft.current = marqueeElement.scrollLeft;
+    setIsDraggingStack(true);
+    setIsStackPaused(true);
+    marqueeElement.setPointerCapture(event.pointerId);
+  };
+
+  const handleStackPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const marqueeElement = marqueeRef.current;
+    if (!marqueeElement || !isDraggingStack) {
+      return;
+    }
+
+    const distance = event.clientX - dragStartX.current;
+    marqueeElement.scrollLeft = dragStartScrollLeft.current - distance;
+  };
+
+  const handleStackPointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    const marqueeElement = marqueeRef.current;
+    if (!marqueeElement) {
+      return;
+    }
+
+    if (marqueeElement.hasPointerCapture(event.pointerId)) {
+      marqueeElement.releasePointerCapture(event.pointerId);
+    }
+
+    setIsDraggingStack(false);
+    setIsStackPaused(false);
+  };
 
   return (
     <section id="home" className="relative overflow-hidden pb-20 pt-28 md:pb-28 md:pt-36 scroll-mt-28">
@@ -95,34 +167,46 @@ const Hero: React.FC = () => {
       <div className="relative z-10 mx-auto max-w-6xl px-4 md:px-6">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr,0.94fr] lg:gap-14">
           <div className="order-2 lg:order-1">
-            <div className="animate-fade-up">
+            <div data-reveal>
               <span className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700">
                 <span className="inline-flex h-2.5 w-2.5 rounded-full bg-brand-500"></span>
                 Recently completed internship at Gleent Inc.
               </span>
             </div>
 
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.34em] text-slate-500 animate-fade-up delay-1">
+            <p data-reveal className="mt-6 text-xs font-semibold uppercase tracking-[0.34em] text-slate-500" style={{ ['--reveal-delay' as string]: '90ms' }}>
               {PERSONAL_INFO.title}
             </p>
 
-            <h1 className="mt-4 font-display text-[clamp(2.2rem,6vw,4.8rem)] font-semibold leading-[1.02] text-slate-900 animate-fade-up delay-2">
+            <h1
+              data-reveal
+              className="mt-4 max-w-[11ch] font-display text-[clamp(2.1rem,5.2vw,4.35rem)] font-semibold leading-[1.02] text-slate-900"
+              style={{ ['--reveal-delay' as string]: '160ms' }}
+            >
               Building practical web experiences for
               <span className="mt-3 block min-h-[1.2em] text-brand-700">
                 <span className="typing-caret">{typedText || '\u00A0'}</span>
               </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-[1.02rem] leading-8 text-slate-600 animate-fade-up delay-3">
+            <p
+              data-reveal
+              className="mt-6 max-w-2xl text-[1.02rem] leading-8 text-slate-600"
+              style={{ ['--reveal-delay' as string]: '240ms' }}
+            >
               I&apos;m {PERSONAL_INFO.name}, a developer with recent internship experience across AI-assisted tools,
-              workflow systems, and modern web applications.
+              internal workflows, and modern web applications.
             </p>
 
-            <p className="mt-4 max-w-2xl text-sm leading-8 text-slate-600 animate-fade-up delay-4 md:text-base">
+            <p
+              data-reveal
+              className="mt-4 max-w-2xl text-sm leading-8 text-slate-600 md:text-base"
+              style={{ ['--reveal-delay' as string]: '320ms' }}
+            >
               {PERSONAL_INFO.shortBio}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3 animate-fade-up delay-4">
+            <div data-reveal className="mt-8 flex flex-wrap gap-3" style={{ ['--reveal-delay' as string]: '380ms' }}>
               <a
                 href="#projects"
                 className="group inline-flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
@@ -141,7 +225,7 @@ const Hero: React.FC = () => {
               </a>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-3 animate-fade-up delay-5">
+            <div data-reveal className="mt-6 flex flex-wrap gap-3" style={{ ['--reveal-delay' as string]: '460ms' }}>
               <a
                 href={`mailto:${PERSONAL_INFO.email}`}
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:-translate-y-0.5 hover:border-brand-300 hover:text-brand-700"
@@ -173,7 +257,9 @@ const Hero: React.FC = () => {
               {QUICK_FACTS.map((fact, index) => (
                 <div
                   key={fact.label}
-                  className={`panel spotlight-card rounded-3xl p-5 animate-fade-up delay-${Math.min(index + 3, 5)}`}
+                  data-reveal
+                  className="panel spotlight-card rounded-3xl p-5"
+                  style={{ ['--reveal-delay' as string]: `${520 + (index * 90)}ms` }}
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{fact.label}</p>
                   <p className="mt-3 text-lg font-semibold text-slate-900">{fact.value}</p>
@@ -182,11 +268,32 @@ const Hero: React.FC = () => {
               ))}
             </div>
 
-            <div className="panel mt-8 rounded-[28px] px-4 py-4 animate-fade-up delay-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Recent stack used in projects</p>
-              <div className="marquee mt-4">
+            <div data-reveal className="panel mt-8 rounded-[28px] px-4 py-4" style={{ ['--reveal-delay' as string]: '700ms' }}>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Recent stack used in projects</p>
+                <p className="text-xs font-medium text-slate-500">Auto-moving and draggable</p>
+              </div>
+              <div
+                ref={marqueeRef}
+                className={`marquee mt-4 ${isStackPaused ? 'is-paused' : ''} ${isDraggingStack ? 'is-dragging' : ''}`}
+                onPointerDown={handleStackPointerDown}
+                onPointerMove={handleStackPointerMove}
+                onPointerUp={handleStackPointerUp}
+                onPointerLeave={() => {
+                  if (!isDraggingStack) {
+                    setIsStackPaused(false);
+                  }
+                }}
+                onPointerCancel={handleStackPointerUp}
+                onMouseEnter={() => setIsStackPaused(true)}
+                onMouseLeave={() => {
+                  if (!isDraggingStack) {
+                    setIsStackPaused(false);
+                  }
+                }}
+              >
                 <div className="marquee-track">
-                  {[...heroStack, ...heroStack].map((item, index) => (
+                  {[...heroStack, ...heroStack, ...heroStack].map((item, index) => (
                     <span key={`${item}-${index}`} className="marquee-pill">
                       {item}
                     </span>
@@ -197,14 +304,16 @@ const Hero: React.FC = () => {
 
             <a
               href="#about"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 transition hover:text-brand-700 animate-fade-up delay-5"
+              data-reveal
+              className="scroll-cue mt-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 transition hover:text-brand-700"
+              style={{ ['--reveal-delay' as string]: '780ms' }}
             >
-              Scroll to learn more
+              Scroll to keep exploring
               <ArrowDown className="h-4 w-4 animate-bounce" />
             </a>
           </div>
 
-          <div className="order-1 mx-auto w-full max-w-[480px] animate-fade-up delay-2 lg:order-2">
+          <div data-reveal className="order-1 mx-auto w-full max-w-[460px] lg:order-2" style={{ ['--reveal-delay' as string]: '180ms' }}>
             <div className="panel tilt-surface relative rounded-[34px] p-5" style={imageStyle}>
               <div className="floating-badge left-6 top-6">
                 React + TypeScript

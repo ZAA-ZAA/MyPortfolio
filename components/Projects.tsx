@@ -124,7 +124,7 @@ const Projects: React.FC = () => {
     <section id="projects" className="py-20 scroll-mt-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl animate-fade-up">
+          <div data-reveal className="max-w-3xl">
             <p className="section-kicker">Projects</p>
             <h2 className="mt-3 font-display text-3xl font-semibold text-slate-900 md:text-4xl">
               Public OJT work, now with a real project viewer.
@@ -134,12 +134,12 @@ const Projects: React.FC = () => {
             </p>
           </div>
 
-          <div className="panel max-w-lg rounded-3xl p-5 text-sm leading-7 text-slate-600 animate-fade-up delay-1">
+          <div data-reveal className="panel max-w-lg rounded-3xl p-5 text-sm leading-7 text-slate-600" style={{ ['--reveal-delay' as string]: '120ms' }}>
             {PROJECT_NOTE}
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-3 animate-fade-up delay-2">
+        <div data-reveal className="mt-8 flex flex-wrap gap-3" style={{ ['--reveal-delay' as string]: '200ms' }}>
           {filters.map((filter) => (
             <button
               key={filter.id}
@@ -157,7 +157,7 @@ const Projects: React.FC = () => {
         </div>
 
         {activeProject ? (
-          <div className="mt-8 animate-fade-up delay-2">
+          <div data-reveal className="mt-8" style={{ ['--reveal-delay' as string]: '260ms' }}>
             <div className="panel spotlight-card overflow-hidden rounded-[36px] p-6 md:p-8" onMouseMove={handleSpotlightMove}>
               <div className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]">
                 <div className="rounded-[28px] bg-gradient-to-br from-slate-950 via-slate-900 to-brand-900 p-6 text-white">
@@ -294,8 +294,9 @@ const Projects: React.FC = () => {
                 type="button"
                 onClick={() => setOpenProjectTitle(project.title)}
                 onMouseMove={handleSpotlightMove}
-                className="panel spotlight-card tilt-surface text-left rounded-[30px] p-6 transition duration-300 hover:-translate-y-1 animate-fade-up"
-                style={{ animationDelay: `${index * 70}ms` }}
+                data-reveal
+                className="panel spotlight-card tilt-surface text-left rounded-[30px] p-6 transition duration-300 hover:-translate-y-1"
+                style={{ ['--reveal-delay' as string]: `${120 + (index * 70)}ms` }}
                 aria-label={`Open ${project.title} project details`}
               >
                 <div className="flex items-start justify-between gap-4">

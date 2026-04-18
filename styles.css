@@ -2,6 +2,12 @@
   color-scheme: light;
 }
 
+html,
+body,
+#root {
+  overflow-x: clip;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -32,6 +38,7 @@ img {
 .page-shell {
   position: relative;
   isolation: isolate;
+  overflow-x: clip;
 }
 
 .page-shell::before {
@@ -127,15 +134,29 @@ img {
 }
 
 .marquee {
+  position: relative;
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-x;
+  scrollbar-width: none;
+}
+
+.marquee::-webkit-scrollbar {
+  display: none;
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
   gap: 0.75rem;
-  animation: marquee-slide 20s linear infinite;
+  will-change: transform;
+}
+
+.marquee.is-dragging {
+  cursor: grabbing;
 }
 
 .marquee-pill {
@@ -182,6 +203,34 @@ img {
 
 .project-modal-shell {
   animation: modal-rise 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(34px) scale(0.985);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-cue {
+  position: relative;
+}
+
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.6rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.45), transparent);
 }
 
 @keyframes marquee-slide {
@@ -268,6 +317,12 @@ img {
 
   .marquee-track {
     animation: none;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   .floating-badge {

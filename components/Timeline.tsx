@@ -6,18 +6,18 @@ const Timeline: React.FC = () => {
   return (
     <section id="experience" className="py-20 scroll-mt-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="max-w-3xl animate-fade-up">
+        <div data-reveal className="max-w-3xl">
           <p className="section-kicker">Experience</p>
           <h2 className="mt-3 font-display text-3xl font-semibold text-slate-900 md:text-4xl">
-            Recent internship experience with a lighter education summary.
+            Internship experience first, with education kept concise.
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
-            Since I am early in my career, both recent experience and current education matter, but the focus here is on relevant work rather than a full school timeline.
+            Since I am still early in my career, both experience and education matter, but this section keeps the focus on recent hands-on work and the tools I used.
           </p>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.2fr,0.8fr]">
-          <div className="panel rounded-[32px] p-8 md:p-10 animate-fade-up delay-1">
+          <div data-reveal className="panel rounded-[32px] p-8 md:p-10" style={{ ['--reveal-delay' as string]: '100ms' }}>
             {EXPERIENCE.map((item) => (
               <div key={item.company}>
                 <div className="flex flex-wrap items-start justify-between gap-4">
@@ -58,7 +58,7 @@ const Timeline: React.FC = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="panel rounded-[32px] p-7 animate-fade-up delay-2">
+            <div data-reveal className="panel rounded-[32px] p-7" style={{ ['--reveal-delay' as string]: '180ms' }}>
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-white">
                   <GraduationCap className="h-5 w-5" />
@@ -86,7 +86,7 @@ const Timeline: React.FC = () => {
               ))}
             </div>
 
-            <div className="panel rounded-[32px] p-7 animate-fade-up delay-3">
+            <div data-reveal className="panel rounded-[32px] p-7" style={{ ['--reveal-delay' as string]: '260ms' }}>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Public links</p>
               <h3 className="mt-3 font-display text-xl font-semibold text-slate-900">What is available online.</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600">
