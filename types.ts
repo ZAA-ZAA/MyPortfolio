@@ -7,6 +7,7 @@ export interface Project {
   category: 'ai' | 'business' | 'workflow';
   status: string;
   visibility: string;
+  featured?: boolean;
   techStack: string[];
   focusAreas: string[];
   highlights: string[];

@@ -88,9 +88,9 @@ const Timeline: React.FC = () => {
 
             <div data-reveal className="panel rounded-[32px] p-7" style={{ ['--reveal-delay' as string]: '260ms' }}>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Public links</p>
-              <h3 className="mt-3 font-display text-xl font-semibold text-slate-900">What is available online.</h3>
+              <h3 className="mt-3 font-display text-xl font-semibold text-slate-900">Professional profiles.</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600">
-                Several internship projects are public on GitHub, while live deployments are added selectively depending on hosting cost and project fit.
+                GitHub and LinkedIn are the main public references connected to this portfolio.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -113,10 +113,6 @@ const Timeline: React.FC = () => {
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
-
-              <p className="mt-5 text-sm leading-7 text-slate-500">
-                If a recruiter asks for more detail, the best next step is a short walkthrough of the repositories, product scope, and my contributions.
-              </p>
             </div>
           </div>
         </div>

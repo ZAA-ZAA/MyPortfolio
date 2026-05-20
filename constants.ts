@@ -1,13 +1,15 @@
 import { EducationItem, ExperienceItem, Project, QuickFact, Skill, StrengthItem } from './types';
 
+const withBaseUrl = (assetPath: string) => `${import.meta.env.BASE_URL}${assetPath.replace(/^\/+/, '')}`;
+
 export const PERSONAL_INFO = {
   name: "Zoen A. Aldueza",
   title: "Junior Web Developer",
   email: "alduezazoen77@gmail.com",
   phone: "09675187933",
   location: "Cabuyao, Laguna, Philippines",
-  photoUrl: "/profile.jpg",
-  resumeUrl: "/resume.pdf",
+  photoUrl: withBaseUrl('profile.jpg'),
+  resumeUrl: withBaseUrl('resume.pdf'),
   availability: "Open to junior web development opportunities",
   shortBio:
     "BSIT student at Pamantasan ng Cabuyao who recently completed an internship at Gleent Inc., building training projects and hands-on web applications around AI-assisted tools, internal workflows, and database-backed services using React, TypeScript, Python, and PostgreSQL.",
@@ -109,6 +111,12 @@ export const EDUCATION: EducationItem[] = [
   }
 ];
 
+// Add or edit projects here.
+// - Add a new object below to show another project on the portfolio.
+// - Set `featured: true` if you want it included in the Featured section.
+// - Add these fields to show a live button inside the modal:
+//   liveUrl: 'https://your-live-demo-url.com',
+//   liveLabel: 'View live demo',
 export const PROJECTS: Project[] = [
   {
     title: "Fathom AI",
@@ -120,6 +128,7 @@ export const PROJECTS: Project[] = [
     category: "ai",
     status: "Completed",
     visibility: "Public repository",
+    featured: true,
     techStack: ["React", "FastAPI", "PostgreSQL", "OpenAI", "FFmpeg", "Cloudflare R2"],
     focusAreas: ["Transcription", "Video analysis", "AI chat", "User flow"],
     highlights: [
@@ -140,6 +149,7 @@ export const PROJECTS: Project[] = [
     category: "business",
     status: "Completed",
     visibility: "Public repository",
+    featured: true,
     techStack: ["React", "TypeScript", "Python", "Flask", "PostgreSQL", "Docker"],
     focusAreas: ["Billing workflows", "Client records", "Reporting", "AI assistance"],
     highlights: [
@@ -180,6 +190,7 @@ export const PROJECTS: Project[] = [
     category: "ai",
     status: "Completed",
     visibility: "Public repository",
+    featured: true,
     techStack: ["LibreChat", "FastAPI", "PostgreSQL + pgvector", "MongoDB", "Docker", "OpenAI"],
     focusAreas: ["Persistent memory", "Contextual chat", "User-specific recall", "Multi-session experience"],
     highlights: [
@@ -232,4 +243,4 @@ export const PROJECTS: Project[] = [
 ];
 
 export const PROJECT_NOTE =
-  "These OJT projects are publicly shareable on GitHub. I only add live deployments selectively, since some systems are better presented through repository walkthroughs and documentation than always-on hosting.";
+  "Selected internship projects with public repositories and concise case-study details.";

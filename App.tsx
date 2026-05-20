@@ -10,6 +10,18 @@ import Contact from './components/Contact';
 const App: React.FC = () => {
   useEffect(() => {
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    if (!revealElements.length) {
+      return;
+    }
+
+    const markVisibleElements = () => {
+      revealElements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.9) {
+          element.classList.add('is-visible');
+        }
+      });
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -21,14 +33,35 @@ const App: React.FC = () => {
         });
       },
       {
-        rootMargin: '0px 0px -12% 0px',
-        threshold: 0.12,
+        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.06,
       },
     );
 
-    revealElements.forEach((element) => observer.observe(element));
+    revealElements.forEach((element) => {
+      element.classList.add('reveal-ready');
 
-    return () => observer.disconnect();
+      if (element.closest('#home')) {
+        element.classList.add('is-visible');
+      }
+    });
+
+    const animationFrame = window.requestAnimationFrame(() => {
+      markVisibleElements();
+      revealElements.forEach((element) => {
+        if (!element.classList.contains('is-visible')) {
+          observer.observe(element);
+        }
+      });
+    });
+
+    window.addEventListener('resize', markVisibleElements);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener('resize', markVisibleElements);
+      observer.disconnect();
+    };
   }, []);
 
   return (

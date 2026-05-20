@@ -34,21 +34,26 @@ const Projects: React.FC = () => {
     [activeFilter],
   );
 
+  const featuredProjects = useMemo(() => {
+    const selectedProjects = filteredProjects.filter((project) => project.featured);
+    return selectedProjects.length ? selectedProjects : filteredProjects;
+  }, [filteredProjects]);
+
   useEffect(() => {
     setActiveCarouselIndex(0);
   }, [activeFilter]);
 
   useEffect(() => {
-    if (filteredProjects.length <= 1 || openProjectTitle) {
+    if (featuredProjects.length <= 1 || openProjectTitle) {
       return;
     }
 
     const interval = window.setInterval(() => {
-      setActiveCarouselIndex((currentIndex) => (currentIndex + 1) % filteredProjects.length);
+      setActiveCarouselIndex((currentIndex) => (currentIndex + 1) % featuredProjects.length);
     }, 4200);
 
     return () => window.clearInterval(interval);
-  }, [filteredProjects, openProjectTitle]);
+  }, [featuredProjects, openProjectTitle]);
 
   useEffect(() => {
     if (!openProjectTitle) {
@@ -89,15 +94,15 @@ const Projects: React.FC = () => {
     };
   }, [filteredProjects, openProjectTitle]);
 
-  const activeProject = filteredProjects[activeCarouselIndex] ?? filteredProjects[0];
+  const activeProject = featuredProjects[activeCarouselIndex] ?? featuredProjects[0];
   const modalProject = filteredProjects.find((project) => project.title === openProjectTitle) ?? null;
 
   const goToPreviousProject = () => {
-    setActiveCarouselIndex((currentIndex) => (currentIndex - 1 + filteredProjects.length) % filteredProjects.length);
+    setActiveCarouselIndex((currentIndex) => (currentIndex - 1 + featuredProjects.length) % featuredProjects.length);
   };
 
   const goToNextProject = () => {
-    setActiveCarouselIndex((currentIndex) => (currentIndex + 1) % filteredProjects.length);
+    setActiveCarouselIndex((currentIndex) => (currentIndex + 1) % featuredProjects.length);
   };
 
   const goToPreviousModalProject = () => {
@@ -127,10 +132,10 @@ const Projects: React.FC = () => {
           <div data-reveal className="max-w-3xl">
             <p className="section-kicker">Projects</p>
             <h2 className="mt-3 font-display text-3xl font-semibold text-slate-900 md:text-4xl">
-              Public OJT work, now with a real project viewer.
+              Selected internship projects and technical case studies.
             </h2>
             <p className="mt-4 text-base leading-8 text-slate-600">
-              You can filter the projects, browse the featured carousel, and open each one in a proper modal with details, stack, and repository links.
+              A curated selection of projects covering AI-assisted tools, workflow systems, and modern web applications.
             </p>
           </div>
 
@@ -163,7 +168,7 @@ const Projects: React.FC = () => {
                 <div className="rounded-[28px] bg-gradient-to-br from-slate-950 via-slate-900 to-brand-900 p-6 text-white">
                   <div className="flex items-center justify-between gap-4">
                     <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100">
-                      Featured
+                      Featured project
                     </span>
                     <div className="flex items-center gap-2">
                       <button
@@ -268,7 +273,7 @@ const Projects: React.FC = () => {
               </div>
 
               <div className="mt-6 flex justify-center gap-2">
-                {filteredProjects.map((project, index) => (
+                {featuredProjects.map((project, index) => (
                   <button
                     key={project.title}
                     type="button"
@@ -328,7 +333,7 @@ const Projects: React.FC = () => {
                   <span className="font-medium text-slate-500">
                     {project.repo ? 'Public repository available' : 'Project summary only'}
                   </span>
-                  <span className="font-semibold text-brand-700">Open modal</span>
+                  <span className="font-semibold text-brand-700">View details</span>
                 </div>
               </button>
             );
@@ -350,7 +355,6 @@ const Projects: React.FC = () => {
           >
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 md:px-7">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Project modal</p>
                 <h3 className="mt-1 font-display text-xl font-semibold text-slate-900">{modalProject.title}</h3>
               </div>
 
@@ -430,11 +434,7 @@ const Projects: React.FC = () => {
                         <ExternalLink className="h-4 w-4" />
                         {modalProject.liveLabel || 'View live project'}
                       </a>
-                    ) : (
-                      <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-slate-300 bg-white px-5 py-3 text-sm font-medium text-slate-500">
-                        Live hosting is selective for this project
-                      </span>
-                    )}
+                    ) : null}
                   </div>
 
                   <div className="mt-8">
@@ -471,13 +471,6 @@ const Projects: React.FC = () => {
                         </span>
                       ))}
                     </div>
-                  </div>
-
-                  <div className="rounded-[28px] border border-slate-200 bg-gradient-to-br from-brand-50 to-white p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">How to use this section</p>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">
-                      Use the repository link for the actual codebase, and use this modal as the quick portfolio summary of what the project does and what technologies were involved.
-                    </p>
                   </div>
                 </div>
               </div>
