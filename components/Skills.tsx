@@ -9,7 +9,7 @@ const Skills: React.FC = () => {
           <p className="section-kicker">Skills</p>
           <h2 className="mt-3 font-display text-3xl font-semibold text-slate-900 md:text-4xl">Core stack and working strengths.</h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
-            I kept this section focused on tools and areas I have actively used during coursework and recent internship work.
+            I kept this section focused on tools and areas I have actively used during coursework, project work, and recent internship work.
           </p>
         </div>
 

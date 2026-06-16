@@ -10,13 +10,13 @@ export const PERSONAL_INFO = {
   location: "Cabuyao, Laguna, Philippines",
   photoUrl: withBaseUrl('profile.jpg'),
   resumeUrl: withBaseUrl('resume.pdf'),
-  availability: "Open to junior web development opportunities",
+  availability: "Open to entry-level web development opportunities",
   shortBio:
-    "BSIT student at Pamantasan ng Cabuyao who recently completed an internship at Gleent Inc., building training projects and hands-on web applications around AI-assisted tools, internal workflows, and database-backed services using React, TypeScript, Python, and PostgreSQL.",
+    "Fresh BSIT graduate from Pamantasan ng Cabuyao who recently completed an internship at Gleent Inc., building training projects and hands-on web applications around AI-assisted tools, internal workflows, and database-backed services using React, TypeScript, Python, and PostgreSQL.",
   about:
     "I enjoy building interfaces and application flows that feel clear, practical, and easy to understand. During my internship, I worked on guided projects focused on modern web development, AI-assisted features, and workflow-based systems, which helped me build stronger habits around structure, usability, and team-oriented development. I also gained working exposure to Python services, PostgreSQL-backed systems, and Agile-style collaboration, and I am continuing to grow in those areas.",
   lookingFor:
-    "Right now, I am looking for a junior frontend or full-stack role where I can keep learning from experienced teammates, contribute to real product work, and continue improving through feedback and hands-on delivery."
+    "Right now, I am looking for an entry-level frontend or full-stack role where I can keep learning from experienced teammates, contribute to real product work, and continue improving through feedback and hands-on delivery."
 };
 
 export const SOCIAL_LINKS = {
@@ -37,7 +37,7 @@ export const QUICK_FACTS: QuickFact[] = [
   },
   {
     label: "Current goal",
-    value: "Entry-level development role",
+    value: "Entry-level web role",
     detail: "Open to collaborative teams and real production work"
   }
 ];
@@ -103,8 +103,9 @@ export const EDUCATION: EducationItem[] = [
   {
     school: "Pamantasan ng Cabuyao",
     degree: "Bachelor of Science in Information Technology",
-    year: "2022 - Present",
+    year: "2022 - 2026",
     details: [
+      "Fresh graduate",
       "Recent OJT completion at Gleent Inc.",
       "Focused on web development, software engineering, and database-backed systems."
     ]

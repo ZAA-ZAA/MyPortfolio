@@ -9,10 +9,10 @@ const Timeline: React.FC = () => {
         <div data-reveal className="max-w-3xl">
           <p className="section-kicker">Experience</p>
           <h2 className="mt-3 font-display text-3xl font-semibold text-slate-900 md:text-4xl">
-            Internship experience first, with education kept concise.
+            Recent internship experience first, with education kept concise.
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
-            Since I am still early in my career, both experience and education matter, but this section keeps the focus on recent hands-on work and the tools I used.
+            Since I am a fresh graduate, both experience and education matter, but this section keeps the focus on recent hands-on work and the tools I used.
           </p>
         </div>
 
@@ -59,15 +59,15 @@ const Timeline: React.FC = () => {
 
           <div className="space-y-6">
             <div data-reveal className="panel rounded-[32px] p-7" style={{ ['--reveal-delay' as string]: '180ms' }}>
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-white">
-                  <GraduationCap className="h-5 w-5" />
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-white">
+                    <GraduationCap className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Education</p>
+                    <h3 className="mt-1 font-display text-xl font-semibold text-slate-900">Education background</h3>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Education</p>
-                  <h3 className="mt-1 font-display text-xl font-semibold text-slate-900">Current academic background</h3>
-                </div>
-              </div>
 
               {EDUCATION.map((item) => (
                 <div key={item.degree} className="mt-6 rounded-3xl border border-slate-200 bg-white/80 p-5">

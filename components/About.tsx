@@ -15,10 +15,10 @@ const About: React.FC = () => {
         <div data-reveal className="max-w-3xl">
           <p className="section-kicker">About</p>
           <h2 className="mt-3 font-display text-3xl font-semibold text-slate-900 md:text-4xl">
-            A grounded introduction focused on how I work and where I can grow.
+            A grounded introduction focused on how I work and what I&apos;m ready to contribute.
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
-            For an early-career portfolio, what matters most is showing real project exposure, clear strengths, and the kind of work I am ready to contribute to next.
+            For a fresh graduate portfolio, what matters most is showing real project exposure, clear strengths, and the kind of work I am ready to contribute to next.
           </p>
         </div>
 

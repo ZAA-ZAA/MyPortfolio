@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
                 Let&apos;s talk about the role, the team, or the work.
               </h2>
               <p className="mt-4 max-w-xl text-base leading-8 text-slate-300">
-                I recently finished my internship and I&apos;m looking for opportunities where I can contribute as a junior developer while continuing to learn in a real product environment.
+                I recently finished my internship and graduated, and I&apos;m looking for opportunities where I can contribute as an entry-level developer while continuing to learn in a real product environment.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -86,7 +86,7 @@ const Contact: React.FC = () => {
 
           <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
             <p>&copy; {new Date().getFullYear()} {PERSONAL_INFO.name}</p>
-            <p>Internship case studies and walkthroughs are available during interviews.</p>
+            <p>Project case studies and walkthroughs are available during interviews.</p>
           </div>
         </div>
       </div>

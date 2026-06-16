@@ -206,8 +206,8 @@ const Hero: React.FC = () => {
               className="mt-6 max-w-2xl text-[1.02rem] leading-8 text-slate-600"
               style={{ ['--reveal-delay' as string]: '240ms' }}
             >
-              I&apos;m {PERSONAL_INFO.name}, a developer with recent internship experience across AI-assisted tools,
-              internal workflows, and modern web applications.
+              I&apos;m {PERSONAL_INFO.name}, a fresh graduate with recent internship experience across AI-assisted
+              tools, internal workflows, and modern web applications.
             </p>
 
             <p
